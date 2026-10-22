@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highclere Castle & Historic Estates × Alexon Labs | 24/7 Private Tour & Buyout Concierge Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0C0814;
+      --surface: #140F22;
+      --card: #1C152E;
+      --card-border: rgba(168, 85, 247, 0.2);
+      --accent: #C084FC;
+      --gold: #EAB308;
+      --gold-glow: rgba(234, 179, 8, 0.25);
+      --purple-glow: rgba(192, 132, 252, 0.25);
+      --text: #F8FAFC;
+      --text-muted: #A8A29E;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-serif: 'Playfair Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(168, 85, 247, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(234, 179, 8, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, #0C0814 0%, #120C1F 100%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    /* Estate Header */
+    .estate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 36px;
+    }
+    .estate-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .estate-crest {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #7E22CE 0%, var(--gold) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 16px var(--purple-glow);
+    }
+    .estate-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFF;
+    }
+    .estate-sub {
+      font-size: 0.76rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; transform: scale(1.2); } }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 48px;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #D8B4FE 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Left: Estate Architecture */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .info-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #FFF;
+    }
+    .perk-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .perk-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #E2E8F0;
+    }
+    .perk-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .calc-box {
+      background: var(--card);
+      border: 1px solid rgba(234, 179, 8, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .calc-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .calc-metric {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+    .calc-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Right: Interactive Widget */
+    .widget-container {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+    .widget-header {
+      background: linear-gradient(135deg, #1C152E 0%, #2A1F45 100%);
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .widget-avatar {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #A855F7 0%, var(--gold) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .widget-info h4 {
+      font-size: 0.98rem;
+      color: #FFF;
+      font-family: var(--font-serif);
+    }
+    .widget-info p {
+      font-size: 0.76rem;
+      color: var(--accent);
+    }
+
+    .chat-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+    .msg {
+      max-width: 85%;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .msg-bot {
+      background: #1C152E;
+      color: #F1F5F9;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .msg-user {
+      background: linear-gradient(135deg, #A855F7 0%, #7E22CE 100%);
+      color: #FFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      font-weight: 600;
+    }
+
+    .quick-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .opt-chip {
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      color: var(--accent);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .opt-chip:hover {
+      background: var(--accent);
+      color: #0C0814;
+      transform: translateY(-1px);
+    }
+
+    .widget-footer {
+      padding: 16px 20px;
+      background: #0F0A19;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 10px;
+    }
+    .widget-input {
+      flex: 1;
+      background: #1C152E;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      color: #FFF;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .widget-input:focus { border-color: var(--accent); }
+    .btn-send {
+      background: var(--gold);
+      color: #0C0814;
+      border: none;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-send:hover { filter: brightness(1.1); }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="estate-header">
+      <div class="estate-brand">
+        <div class="estate-crest">🏰</div>
+        <div>
+          <div class="estate-title">Highclere Castle & Historic Venues</div>
+          <div class="estate-sub">Exclusive Estate Hire Prototype × Alexon Labs</div>
+        </div>
+      </div>
+      <div class="live-badge">
+        <span class="badge-dot"></span>
+        <span>2026/2027 Calendar Intake Active</span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Exclusive Castle Hire & <span>Private Wedding Tour Concierge</span></h1>
+      <p>Luxury couples and event producers research venues late into the night. The Alexons Estate Concierge instantly qualifies guest capacity, checks calendar windows, and schedules private champagne walkthroughs without manual email delays.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Left: Value Props -->
+      <div class="info-card">
+        <h3>Estate Event Sales Acceleration</h3>
+        <ul class="perk-list">
+          <li class="perk-item">
+            <span class="perk-icon">✦</span>
+            <span><strong>Instant Buyout Qualification</strong>: Qualifies guest size (50–350+ guests), marquee lawn requirements, and minimum spend thresholds (£20k–£65k+) on the spot.</span>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">✦</span>
+            <span><strong>Private Champagne Tour Scheduling</strong>: Reserves in-person estate viewings directly into the Head of Events' calendar with zero back-and-forth.</span>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">✦</span>
+            <span><strong>International Destination Inquiries</strong>: Handles US, European, and Middle Eastern wedding inquiries across any timezone 24/7.</span>
+          </li>
+        </ul>
+
+        <div class="calc-box">
+          <div class="calc-title">Estate Revenue Velocity</div>
+          <div class="calc-metric">+3.8x</div>
+          <div class="calc-sub">Increase in booked private tours by responding within 30 seconds vs. 48-hour email delays.</div>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Widget -->
+      <div class="widget-container">
+        <div class="widget-header">
+          <div class="widget-avatar">👑</div>
+          <div class="widget-info">
+            <h4>Estate Private Hire Concierge</h4>
+            <p>● Live • Average response &lt; 2s</p>
+          </div>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+          <div class="msg msg-bot">
+            Welcome to Highclere Castle & Historic Estate Private Hire. Are you planning an exclusive wedding, corporate retreat, or private estate buyout?
+            <div class="quick-options">
+              <button class="opt-chip" onclick="reply('Luxury Wedding Buyout')">Luxury Wedding Buyout</button>
+              <button class="opt-chip" onclick="reply('Private Estate Tour')">Book Champagne Tour</button>
+              <button class="opt-chip" onclick="reply('2026/2027 Availability')">2026/2027 Dates</button>
+              <button class="opt-chip" onclick="reply('Download Estate Brochure')">Download Lookbook</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget-footer">
+          <input type="text" id="userInput" class="widget-input" placeholder="Ask about guest numbers, marquee grounds, or pricing..." onkeypress="handleKey(event)">
+          <button class="btn-send" onclick="sendInput()">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function reply(text) {
+      appendMsg(text, 'user');
+      setTimeout(() => {
+        if (text.includes('Wedding Buyout')) {
+          appendMsg("Congratulations on your upcoming celebration. Highclere accommodates up to 140 guests in the State Rooms or up to 350 on our landscaped marquee grounds. What guest count are you anticipating?", 'bot', ['75 – 150 Guests', '150 – 250 Guests', '250 – 350+ Guests']);
+        } else if (text.includes('Tour')) {
+          appendMsg("We would be delighted to host you for a private champagne walkthrough with our Senior Wedding Director. Which day suits your schedule best?", 'bot', ['This Saturday at 11am', 'Next Thursday at 2pm', 'Schedule Private Virtual Tour']);
+        } else if (text.includes('2026') || text.includes('Dates')) {
+          appendMsg("Our peak Summer and Autumn 2026 dates are currently filling quickly, and our 2027 calendar is now open. Which season are you considering?", 'bot', ['Summer 2026 (June-August)', 'Autumn 2026 (Sept-Nov)', 'Spring / Summer 2027']);
+        } else {
+          appendMsg("I've prepared our comprehensive 2026/2027 Private Hire Lookbook & Pricing Guide. Would you like me to send the direct link to your email or WhatsApp?", 'bot', ['Send via WhatsApp', 'Send via Email']);
+        }
+      }, 700);
+    }
+
+    function sendInput() {
+      const input = document.getElementById('userInput');
+      const val = input.value.trim();
+      if (!val) return;
+      appendMsg(val, 'user');
+      input.value = '';
+      setTimeout(() => {
+        appendMsg(`Thank you for your inquiry regarding "${val}". Our Head of Private Events reviews all custom requests personally. Would you like to reserve a 15-minute introductory consultation call?`, 'bot', ['Book 15-min Discovery Call', 'Request Custom Proposal']);
+      }, 800);
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Enter') sendInput();
+    }
+
+    function appendMsg(text, sender, chips = []) {
+      const chat = document.getElementById('chatBody');
+      const div = document.createElement('div');
+      div.className = `msg msg-${sender}`;
+      div.innerHTML = text;
+
+      if (chips.length > 0) {
+        const wrap = document.createElement('div');
+        wrap.className = 'quick-options';
+        chips.forEach(c => {
+          const btn = document.createElement('button');
+          btn.className = 'opt-chip';
+          btn.innerText = c;
+          btn.onclick = () => reply(c);
+          wrap.appendChild(btn);
+        });
+        div.appendChild(wrap);
+      }
+
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>

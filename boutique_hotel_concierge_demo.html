@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grand Heritage Mayfair × Alexon Labs | Direct-Booking Concierge Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --luxury-gold: #c5a059;
+            --gold-light: #dfc288;
+            --gold-dark: #967432;
+            --deep-slate: #0b1120;
+            --card-slate: #131c31;
+            --border-luxury: #23304e;
+            --text-pure: #ffffff;
+            --text-muted: #94a3b8;
+            --emerald-accent: #10b981;
+            --ruby-loss: #f43f5e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--deep-slate);
+            color: var(--text-pure);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Top VIP Banner */
+        .vip-banner {
+            background: linear-gradient(90deg, #070b14 0%, #172033 100%);
+            color: #cbd5e1;
+            padding: 10px 32px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-luxury);
+        }
+
+        .vip-badge {
+            background: rgba(197, 160, 89, 0.2);
+            color: var(--gold-light);
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(16px);
+            padding: 22px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-luxury);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .hotel-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .hotel-brand span {
+            color: var(--luxury-gold);
+            font-style: italic;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--luxury-gold), var(--gold-light));
+            color: #0b1120;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(197, 160, 89, 0.45);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+        }
+
+        /* Hotel Showcase Side */
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 46px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            color: var(--luxury-gold);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 620px;
+        }
+
+        /* Suite Cards Grid */
+        .suites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .suite-card {
+            background: var(--card-slate);
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid var(--border-luxury);
+            transition: all 0.25s;
+        }
+
+        .suite-card:hover {
+            border-color: var(--luxury-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .suite-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--luxury-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .suite-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .suite-meta {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .suite-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        .suite-price span {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* OTA Recapture Financial Card */
+        .ota-card {
+            background: linear-gradient(145deg, #131c31 0%, #0d1527 100%);
+            border: 1px solid var(--border-luxury);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ota-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--luxury-gold), var(--emerald-accent));
+        }
+
+        .ota-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .ota-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .ota-stat-box {
+            background: rgba(11, 17, 32, 0.7);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(35, 48, 78, 0.6);
+            text-align: center;
+        }
+
+        .ota-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--emerald-accent);
+        }
+
+        .ota-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Concierge Simulator Box */
+        .concierge-box {
+            background: var(--card-slate);
+            border: 1px solid var(--border-luxury);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            height: 640px;
+            overflow: hidden;
+        }
+
+        .concierge-header {
+            background: #080d1a;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-luxury);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .concierge-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--luxury-gold), #78581e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--emerald-accent);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 2px solid #080d1a;
+        }
+
+        .concierge-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .concierge-info p {
+            font-size: 12px;
+            color: var(--gold-light);
+        }
+
+        /* Chat Body */
+        .chat-stream {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: #0d1527;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-bubble {
+            max-width: 84%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 14px;
+            line-height: 1.55;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-bubble.bot {
+            background: var(--card-slate);
+            color: #f1f5f9;
+            align-self: flex-start;
+            border: 1px solid var(--border-luxury);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-bubble.user {
+            background: linear-gradient(135deg, var(--luxury-gold), var(--gold-dark));
+            color: #0b1120;
+            font-weight: 600;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .suite-quote-card {
+            background: rgba(197, 160, 89, 0.08);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 12px;
+            padding: 14px;
+            margin-top: 10px;
+        }
+
+        .suite-quote-card h5 {
+            color: var(--gold-light);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .suite-quote-card p {
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .btn-reserve-direct {
+            background: linear-gradient(135deg, var(--luxury-gold), var(--gold-light));
+            color: #0b1120;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-reserve-direct:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Prompt Pills */
+        .pills-row {
+            padding: 12px 20px;
+            background: #090e1b;
+            border-top: 1px solid var(--border-luxury);
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .gold-pill {
+            background: rgba(35, 48, 78, 0.5);
+            color: #cbd5e1;
+            border: 1px solid var(--border-luxury);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .gold-pill:hover {
+            background: var(--luxury-gold);
+            color: #0b1120;
+            font-weight: 600;
+            border-color: var(--luxury-gold);
+        }
+
+        /* Chat Input */
+        .chat-input-bar {
+            padding: 16px 20px;
+            background: var(--card-slate);
+            border-top: 1px solid var(--border-luxury);
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-box {
+            flex: 1;
+            padding: 12px 16px;
+            background: #0b1120;
+            border: 1px solid var(--border-luxury);
+            border-radius: 8px;
+            font-size: 14px;
+            color: white;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .input-box:focus {
+            border-color: var(--luxury-gold);
+        }
+
+        .send-btn {
+            background: var(--luxury-gold);
+            color: #0b1120;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VIP Banner -->
+    <div class="vip-banner">
+        <div>
+            <strong>Interactive Client Demo Preview</strong> — Tailored for Independent Boutique & Heritage Hotels
+        </div>
+        <div class="vip-badge">
+            Alexon Labs Direct-Booking Engine
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="hotel-brand">
+            The Grand Heritage <span>Mayfair</span>
+        </div>
+        <nav>
+            <a href="#suites">Signature Suites</a>
+            <a href="#dining">Private Dining & Bar</a>
+            <a href="#spa">Wellness Spa</a>
+            <a href="#direct">Direct Perks</a>
+        </nav>
+        <button class="btn-gold" onclick="triggerPenthouse()">Reserve Suite</button>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Left: Hotel Showcase & Financial Engine -->
+        <div>
+            <h1 class="hero-title">Bespoke luxury in London's most distinguished <em>Mayfair address</em>.</h1>
+            <p class="hero-subtitle">
+                Eliminate external booking engine drop-offs. Guests discover suites, customize VIP perks, and confirm reservations 100% natively on-domain.
+            </p>
+
+            <div class="suites-grid">
+                <div class="suite-card">
+                    <span class="suite-tag">Signature Suite</span>
+                    <h3 class="suite-title">The Mayfair Penthouse</h3>
+                    <p class="suite-meta">Private Terrace • Marble Bath • Butler Service</p>
+                    <div class="suite-price">£1,250 <span>/ night</span></div>
+                </div>
+
+                <div class="suite-card">
+                    <span class="suite-tag">Heritage Collection</span>
+                    <h3 class="suite-title">The Regency Grand Suite</h3>
+                    <p class="suite-meta">Edwardian Fireplace • King Bed • Park Views</p>
+                    <div class="suite-price">£850 <span>/ night</span></div>
+                </div>
+
+                <div class="suite-card">
+                    <span class="suite-tag">Romantic Escape</span>
+                    <h3 class="suite-title">The Courtyard Master Suite</h3>
+                    <p class="suite-meta">Secluded Balcony • In-Suite Bar • Soaking Tub</p>
+                    <div class="suite-price">£680 <span>/ night</span></div>
+                </div>
+
+                <div class="suite-card">
+                    <span class="suite-tag">Executive Luxury</span>
+                    <h3 class="suite-title">The Mayfair Deluxe King</h3>
+                    <p class="suite-meta">High Ceilings • Dedicated Workspace • Nespresso</p>
+                    <div class="suite-price">£490 <span>/ night</span></div>
+                </div>
+            </div>
+
+            <!-- Commercial ROI & OTA Recapture Card -->
+            <div class="ota-card">
+                <h3>Recapturing 18% to 25% OTA Commission Bleed</h3>
+                <p style="font-size: 13px; color: #94a3b8;">
+                    When mobile travelers hit external reservation overlays, over 38% bounce to Booking.com or Expedia—costing thousands in commission penalties on luxury multi-night stays.
+                </p>
+                <div class="ota-stats">
+                    <div class="ota-stat-box">
+                        <div class="ota-number">+4 Suites</div>
+                        <div class="ota-label">Kept direct on-domain/mo</div>
+                    </div>
+                    <div class="ota-stat-box">
+                        <div class="ota-number">£3,400</div>
+                        <div class="ota-label">Monthly OTA commission saved</div>
+                    </div>
+                    <div class="ota-stat-box">
+                        <div class="ota-number">12.1x ROI</div>
+                        <div class="ota-label">Annual profit return on Alexon Labs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: 24/7 VIP Concierge Assistant -->
+        <div class="concierge-box">
+            <div class="concierge-header">
+                <div class="profile-area">
+                    <div class="concierge-avatar">
+                        👑
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="concierge-info">
+                        <h4>Grand Heritage VIP Concierge</h4>
+                        <p>Direct Booking & Bespoke Stay Inquiries</p>
+                    </div>
+                </div>
+                <div style="font-size: 11px; background: rgba(197, 160, 89, 0.15); color: var(--gold-light); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(197, 160, 89, 0.3);">
+                    Direct Privilege Guaranteed
+                </div>
+            </div>
+
+            <div class="chat-stream" id="chatStream">
+                <div class="chat-bubble bot">
+                    Good afternoon. Welcome to The Grand Heritage Mayfair. 
+                    <br><br>
+                    Whether you are seeking our signature Penthouse Terrace, tailoring an anniversary celebration, or arranging private airport chauffeur transfers, I can secure your suite with exclusive direct-booking privileges.
+                </div>
+            </div>
+
+            <!-- Fast Prompt Pills -->
+            <div class="pills-row">
+                <div class="gold-pill" onclick="sendPrompt('🍾 Anniversary VIP Suite Package')">🍾 Anniversary VIP Suite</div>
+                <div class="gold-pill" onclick="sendPrompt('🚗 Heathrow Chauffeur Transfer')">🚗 Airport Chauffeur</div>
+                <div class="gold-pill" onclick="sendPrompt('🍸 Private Rooftop Lounge Buyout')">🍸 Rooftop Event Buyout</div>
+            </div>
+
+            <div class="chat-input-bar">
+                <input type="text" id="guestInput" class="input-box" placeholder="Ask about suites, direct rates, or private dining..." onkeypress="handleKey(event)">
+                <button class="send-btn" onclick="handleSend()">Inquire</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hotelReplies = {
+            "🍾 Anniversary VIP Suite Package": `A romantic celebration in Mayfair is an extraordinary occasion. 🥂
+            
+When you reserve directly through our on-domain concierge, your **Anniversary Privilege Package** includes:
+<div class="suite-quote-card">
+    <h5>The Mayfair Penthouse Experience (Direct Exclusive)</h5>
+    <p>• Complimentary bottle of Dom Pérignon Vintage on ice<br>
+    • Daily full English breakfast served on your private terrace<br>
+    • Guaranteed 2:00 PM late departure with luggage butler<br>
+    • Direct Rate: £1,250/night (Zero OTA booking fee)</p>
+    <button class="btn-reserve-direct" onclick="confirmSuite()">Hold Penthouse with Direct VIP Privilege</button>
+</div>`,
+
+            "🚗 Heathrow Chauffeur Transfer": `We are pleased to provide complimentary Mercedes-Maybach chauffeur transfers from London Heathrow (LHR) or London City Airport for guests staying 2 or more nights in our Master Suites. 
+            
+Our chauffeur will meet you at the arrivals terminal with private luggage handling.`,
+
+            "🍸 Private Rooftop Lounge Buyout": `Our Rooftop Sterling Lounge accommodates up to 35 guests for exclusive evening buyouts overlooking the Mayfair skyline. 
+            
+We curate bespoke cocktail tastings and seasonal canapés with our Head Sommelier. Would you like our private event director to hold a provisional date for your gathering?`
+        };
+
+        function addChat(text, isUser = false) {
+            const stream = document.getElementById("chatStream");
+            const bubble = document.createElement("div");
+            bubble.className = "chat-bubble " + (isUser ? "user" : "bot");
+            bubble.innerHTML = text;
+            stream.appendChild(bubble);
+            stream.scrollTop = stream.scrollHeight;
+        }
+
+        function sendPrompt(prompt) {
+            addChat(prompt, true);
+            setTimeout(() => {
+                const answer = hotelReplies[prompt] || "I would be delighted to assist with your bespoke request. Our Front of House team will ensure every detail is tailored to your preferences.";
+                addChat(answer, false);
+            }, 600);
+        }
+
+        function handleSend() {
+            const input = document.getElementById("guestInput");
+            const val = input.value.trim();
+            if (!val) return;
+
+            addChat(val, true);
+            input.value = "";
+
+            setTimeout(() => {
+                if (val.toLowerCase().includes("anniversary") || val.toLowerCase().includes("romantic") || val.toLowerCase().includes("suite")) {
+                    sendPrompt("🍾 Anniversary VIP Suite Package");
+                } else if (val.toLowerCase().includes("airport") || val.toLowerCase().includes("transfer") || val.toLowerCase().includes("car") || val.toLowerCase().includes("chauffeur")) {
+                    sendPrompt("🚗 Heathrow Chauffeur Transfer");
+                } else if (val.toLowerCase().includes("rooftop") || val.toLowerCase().includes("event") || val.toLowerCase().includes("buyout") || val.toLowerCase().includes("private")) {
+                    sendPrompt("🍸 Private Rooftop Lounge Buyout");
+                } else {
+                    addChat(`Thank you for inquiring. For dates commanding direct rates, our concierge can hold your preferred suite instantly without third-party fees. May I know your intended arrival date?`, false);
+                }
+            }, 700);
+        }
+
+        function handleKey(e) {
+            if (e.key === "Enter") handleSend();
+        }
+
+        function triggerPenthouse() {
+            sendPrompt("🍾 Anniversary VIP Suite Package");
+        }
+
+        function confirmSuite() {
+            addChat("👑 **Suite Hold Confirmed!** Your direct reservation hold for The Mayfair Penthouse has been placed. An encrypted payment guarantee link with your complimentary VIP Dom Pérignon voucher has been dispatched to your email.", false);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadogan & Harley St Aesthetic Clinic × Alexon Labs | 24/7 Clinical Concierge Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0F1D;
+      --surface: #10192E;
+      --card: #15223C;
+      --card-border: rgba(56, 189, 248, 0.15);
+      --accent: #38BDF8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --teal: #14B8A6;
+      --platinum: #F1F5F9;
+      --text-muted: #94A3B8;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-serif: 'Playfair Display', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--platinum);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, #0A0F1D 0%, #0D1424 100%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    /* Clinic Header Bar */
+    .clinic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 36px;
+    }
+    .clinic-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .clinic-logo {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #0284C7 0%, var(--accent) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #0A0F1D;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .clinic-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .clinic-sub {
+      font-size: 0.76rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--teal);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; transform: scale(1.2); } }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 48px;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #38BDF8 0%, #7DD3FC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Main Showcase Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Left: Clinic Info & Calculator */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(12px);
+    }
+    .info-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #FFF;
+    }
+
+    .perk-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .perk-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #E2E8F0;
+    }
+    .perk-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .calc-box {
+      background: var(--card);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .calc-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .calc-metric {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+    .calc-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Right: Interactive Concierge Widget */
+    .widget-container {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+    .widget-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .widget-avatar {
+      width: 42px;
+      height: 42px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #0A0F1D;
+    }
+    .widget-info h4 {
+      font-size: 0.98rem;
+      color: #FFF;
+    }
+    .widget-info p {
+      font-size: 0.76rem;
+      color: var(--teal);
+    }
+
+    .chat-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .msg-bot {
+      background: #1E293B;
+      color: #F1F5F9;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .msg-user {
+      background: linear-gradient(135deg, #0284C7 0%, var(--accent) 100%);
+      color: #0A0F1D;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      font-weight: 600;
+    }
+
+    .quick-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .opt-chip {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .opt-chip:hover {
+      background: var(--accent);
+      color: #0A0F1D;
+      transform: translateY(-1px);
+    }
+
+    .widget-footer {
+      padding: 16px 20px;
+      background: #0B1120;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 10px;
+    }
+    .widget-input {
+      flex: 1;
+      background: #15223C;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      color: #FFF;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .widget-input:focus { border-color: var(--accent); }
+    .btn-send {
+      background: var(--accent);
+      color: #0A0F1D;
+      border: none;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-send:hover { filter: brightness(1.1); }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="clinic-header">
+      <div class="clinic-brand">
+        <div class="clinic-logo">✚</div>
+        <div>
+          <div class="clinic-title">Cadogan & Harley Street Aesthetics</div>
+          <div class="clinic-sub">Clinical Concierge Prototype × Alexon Labs</div>
+        </div>
+      </div>
+      <div class="live-badge">
+        <span class="pulse-dot"></span>
+        <span>24/7 Clinical Intake Active</span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Autonomous Patient Qualification & <span>After-Hours Intake</span></h1>
+      <p>Over 54% of elective aesthetic inquiries occur outside clinical hours (6:00 PM – 11:30 PM). The Alexons Clinical Concierge qualifies patient eligibility, matches treatments, and schedules private consultations instantly.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Left: Clinic Value Props -->
+      <div class="info-card">
+        <h3>Practice Efficiency Architecture</h3>
+        <ul class="perk-list">
+          <li class="perk-item">
+            <span class="perk-icon">✦</span>
+            <span><strong>Clinical Triage & Screening</strong>: Pre-screens contraindications, downtime expectations, and prior treatments before booking.</span>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">✦</span>
+            <span><strong>Deposit Protection</strong>: Automatically qualifies high-intent patients ready for paid consultation slots (£150–£250).</span>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">✦</span>
+            <span><strong>Zero Front-Desk Burnout</strong>: Answers recurring queries on post-procedure swelling, recovery timelines, and pricing without ringing reception phones.</span>
+          </li>
+        </ul>
+
+        <div class="calc-box">
+          <div class="calc-title">Estimated Monthly Practice Impact</div>
+          <div class="calc-metric">+£18,400</div>
+          <div class="calc-sub">Recaptured after-hours consultation revenue per 3 aesthetic clinicians.</div>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Widget -->
+      <div class="widget-container">
+        <div class="widget-header">
+          <div class="widget-avatar">⚕</div>
+          <div class="widget-info">
+            <h4>Harley St Clinical Concierge</h4>
+            <p>● Live • Average response &lt; 2s</p>
+          </div>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+          <div class="msg msg-bot">
+            Good evening. Welcome to Cadogan & Harley Street Aesthetic Clinic. Are you exploring a specific treatment or looking to schedule a private doctor consultation?
+            <div class="quick-options">
+              <button class="opt-chip" onclick="reply('Morpheus8 & Skin Tightening')">Morpheus8 / Tightening</button>
+              <button class="opt-chip" onclick="reply('Injectables & Dermal Fillers')">Injectables & Fillers</button>
+              <button class="opt-chip" onclick="reply('Book Private Consultation')">Book Consultation (£150)</button>
+              <button class="opt-chip" onclick="reply('Post-Procedure Advice')">Post-Procedure Advice</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget-footer">
+          <input type="text" id="userInput" class="widget-input" placeholder="Ask about treatments, pricing, or downtime..." onkeypress="handleKey(event)">
+          <button class="btn-send" onclick="sendInput()">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function reply(text) {
+      appendMsg(text, 'user');
+      setTimeout(() => {
+        if (text.includes('Morpheus8')) {
+          appendMsg("Morpheus8 combines microneedling with targeted radiofrequency to stimulate collagen and remodel subdermal tissue. Downtime is minimal (24-48 hours mild redness). Would you like to check doctor availability for this Friday or early next week?", 'bot', ['View Doctor Availability', 'Pricing & Course Options']);
+        } else if (text.includes('Consultation')) {
+          appendMsg("We'd be delighted to welcome you. Initial 45-minute clinical consultations with our Senior Aesthetic Surgeon are £150 (fully redeemable against treatment). Please select your preferred day:", 'bot', ['Thursday Afternoon', 'Friday Morning', 'Saturday VIP Slot']);
+        } else if (text.includes('Injectables')) {
+          appendMsg("All facial injectables are performed exclusively by GMC-registered medical doctors using premium FDA-approved products. Are you looking to refresh upper facial lines, restore cheek volume, or lip definition?", 'bot', ['Upper Face / Forehead', 'Cheek & Jawline Sculpting', 'Lip Enhancement']);
+        } else {
+          appendMsg("Thank you. I've noted your preference. Would you like our senior patient coordinator to confirm your priority consultation time via WhatsApp or email?", 'bot', ['Confirm via WhatsApp', 'Confirm via Email']);
+        }
+      }, 700);
+    }
+
+    function sendInput() {
+      const input = document.getElementById('userInput');
+      const val = input.value.trim();
+      if (!val) return;
+      appendMsg(val, 'user');
+      input.value = '';
+      setTimeout(() => {
+        appendMsg(`Thank you for your question regarding "${val}". All treatment plans are personalized during your clinical consultation. Shall we reserve a 30-minute assessment slot for you with our Medical Director?`, 'bot', ['Reserve Assessment Slot', 'Speak to Practice Manager']);
+      }, 800);
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Enter') sendInput();
+    }
+
+    function appendMsg(text, sender, chips = []) {
+      const chat = document.getElementById('chatBody');
+      const div = document.createElement('div');
+      div.className = `msg msg-${sender}`;
+      div.innerHTML = text;
+
+      if (chips.length > 0) {
+        const wrap = document.createElement('div');
+        wrap.className = 'quick-options';
+        chips.forEach(c => {
+          const btn = document.createElement('button');
+          btn.className = 'opt-chip';
+          btn.innerText = c;
+          btn.onclick = () => reply(c);
+          wrap.appendChild(btn);
+        });
+        div.appendChild(wrap);
+      }
+
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>

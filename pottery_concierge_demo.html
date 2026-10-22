@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pottery Studio 1 × Alexon Labs | 24/7 Studio Concierge Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clay-primary: #c26d4d;
+            --clay-dark: #8c4227;
+            --clay-light: #fbeee6;
+            --sand-bg: #f9f6f0;
+            --dark-slate: #1c1917;
+            --charcoal: #292524;
+            --muted-stone: #78716c;
+            --border-warm: #e7e0d5;
+            --accent-gold: #d97706;
+            --success-emerald: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--sand-bg);
+            color: var(--dark-slate);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Top Banner */
+        .vip-banner {
+            background: linear-gradient(90deg, #1c1917 0%, #292524 100%);
+            color: #f5f5f4;
+            padding: 10px 24px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .vip-badge {
+            background: rgba(194, 109, 77, 0.25);
+            color: #ff9d79;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(194, 109, 77, 0.4);
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(249, 246, 240, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-warm);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .studio-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--dark-slate);
+        }
+
+        .studio-brand span {
+            color: var(--clay-primary);
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--clay-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--clay-primary);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(194, 109, 77, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--clay-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+        }
+
+        /* Studio Showcase Side */
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            line-height: 1.15;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            color: var(--clay-primary);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--muted-stone);
+            margin-bottom: 32px;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .class-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-warm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+            border-color: var(--clay-primary);
+        }
+
+        .class-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--clay-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .class-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 6px;
+        }
+
+        .class-meta {
+            font-size: 13px;
+            color: var(--muted-stone);
+            margin-bottom: 14px;
+        }
+
+        .class-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--clay-dark);
+        }
+
+        /* Live Assistant Interactive Simulator */
+        .concierge-mockup {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid var(--border-warm);
+            box-shadow: 0 20px 40px -15px rgba(28, 25, 23, 0.12);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 620px;
+        }
+
+        .concierge-header {
+            background: var(--dark-slate);
+            color: white;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .assistant-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar-ring {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--clay-primary), #e28760);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            position: relative;
+        }
+
+        .online-dot {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--success-emerald);
+            border-radius: 50%;
+            border: 2px solid var(--dark-slate);
+        }
+
+        .assistant-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .assistant-info p {
+            font-size: 12px;
+            color: #a8a29e;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #faf8f5;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .message {
+            max-width: 82%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 14px;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot {
+            background: white;
+            color: var(--dark-slate);
+            align-self: flex-start;
+            border: 1px solid var(--border-warm);
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .message.user {
+            background: var(--clay-primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .booking-card {
+            background: var(--clay-light);
+            border: 1px solid rgba(194, 109, 77, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 8px;
+        }
+
+        .booking-card h5 {
+            color: var(--clay-dark);
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .booking-card p {
+            font-size: 12px;
+            color: #57534e;
+            margin-bottom: 8px;
+        }
+
+        .btn-confirm {
+            background: var(--clay-primary);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-confirm:hover {
+            background: var(--clay-dark);
+        }
+
+        /* Quick Prompt Pills */
+        .prompt-pills {
+            padding: 12px 20px;
+            background: white;
+            border-top: 1px solid var(--border-warm);
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .pill {
+            background: #f5f0e8;
+            color: var(--charcoal);
+            border: 1px solid var(--border-warm);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pill:hover {
+            background: var(--clay-primary);
+            color: white;
+            border-color: var(--clay-primary);
+        }
+
+        /* Chat Input */
+        .chat-footer {
+            padding: 14px 20px;
+            background: white;
+            border-top: 1px solid var(--border-warm);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border-warm);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            border-color: var(--clay-primary);
+        }
+
+        .btn-send {
+            background: var(--dark-slate);
+            color: white;
+            border: none;
+            padding: 0 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* ROI Math Card */
+        .roi-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-warm);
+            margin-top: 24px;
+        }
+
+        .roi-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .roi-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .roi-stat {
+            background: var(--sand-bg);
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .roi-number {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--clay-primary);
+        }
+
+        .roi-label {
+            font-size: 12px;
+            color: var(--muted-stone);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Notice -->
+    <div class="vip-banner">
+        <div>
+            <strong>Interactive Client Demo Preview</strong> — Tailored for Pottery Studio 1 (Natali & Team)
+        </div>
+        <div class="vip-badge">
+            Engineered by Alexon Labs
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="studio-brand">
+            Pottery Studio <span>1</span> LA
+        </div>
+        <nav>
+            <a href="#classes">Class Schedule</a>
+            <a href="#parties">Private Parties</a>
+            <a href="#memberships">Memberships</a>
+            <a href="#faq">Studio FAQ</a>
+        </nav>
+        <button class="btn-primary" onclick="triggerPartyInquiry()">Book Wheel Party</button>
+    </header>
+
+    <!-- Main Section -->
+    <div class="container">
+        <!-- Left: Studio Website Simulator -->
+        <div>
+            <h1 class="hero-title">Experience the craft of wheel throwing in <em>Los Angeles</em>.</h1>
+            <p class="hero-subtitle">
+                From beginner taster workshops to exclusive 12-person private parties and corporate team building, reserve your pottery experience in seconds.
+            </p>
+
+            <div class="classes-grid">
+                <div class="class-card">
+                    <span class="class-tag">Most Popular</span>
+                    <h3 class="class-title">Beginner Wheel Throwing</h3>
+                    <p class="class-meta">2 Hours • Clay & Firing Included</p>
+                    <div class="class-price">$78 / person</div>
+                </div>
+
+                <div class="class-card">
+                    <span class="class-tag">Weekend Night</span>
+                    <h3 class="class-title">Friday Clay & Sip</h3>
+                    <p class="class-meta">BYOB • Music & Pottery Intro</p>
+                    <div class="class-price">$85 / person</div>
+                </div>
+
+                <div class="class-card">
+                    <span class="class-tag">High-Ticket</span>
+                    <h3 class="class-title">Private Group Buyout</h3>
+                    <p class="class-meta">Up to 12 Guests • Dedicated Instructor</p>
+                    <div class="class-price">$850 total</div>
+                </div>
+
+                <div class="class-card">
+                    <span class="class-tag">Skill Mastery</span>
+                    <h3 class="class-title">4-Week Ceramic Intensive</h3>
+                    <p class="class-meta">Weekly Guided Class + Open Studio</p>
+                    <div class="class-price">$340 / student</div>
+                </div>
+            </div>
+
+            <!-- Commercial ROI Card -->
+            <div class="roi-card">
+                <h3>Studio Financial Impact of 24/7 Automation</h3>
+                <p style="font-size: 13px; color: #78716c;">
+                    Pottery studios typically lose 30–45% of evening workshop and private party inquiries due to delayed response times. Here is what capturing them yields:
+                </p>
+                <div class="roi-stat-grid">
+                    <div class="roi-stat">
+                        <div class="roi-number">+2 Parties</div>
+                        <div class="roi-label">Avg. $1,700/mo net new revenue</div>
+                    </div>
+                    <div class="roi-stat">
+                        <div class="roi-number">0 Mins</div>
+                        <div class="roi-label">Staff kiln/clay time saved</div>
+                    </div>
+                    <div class="roi-stat">
+                        <div class="roi-number">8.4x ROI</div>
+                        <div class="roi-label">On Alexon Labs setup</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: The 24/7 AI Concierge Assistant -->
+        <div class="concierge-mockup">
+            <div class="concierge-header">
+                <div class="assistant-profile">
+                    <div class="avatar-ring">
+                        🏺
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="assistant-info">
+                        <h4>Studio 1 Concierge</h4>
+                        <p>Available 24/7 • Instant Booking & FAQs</p>
+                    </div>
+                </div>
+                <div style="font-size: 11px; background: rgba(255,255,255,0.15); padding: 4px 8px; border-radius: 6px;">
+                    Alexon Live AI
+                </div>
+            </div>
+
+            <div class="chat-body" id="chatBody">
+                <div class="message bot">
+                    Hi there! 👋 Welcome to Pottery Studio 1. Whether you are looking for our popular Beginner Wheel classes, checking open wheel time, or planning a private group event, I can help you hold your spot instantly!
+                </div>
+            </div>
+
+            <!-- Fast Click Pills -->
+            <div class="prompt-pills">
+                <div class="pill" onclick="sendQuickPrompt('Can I book a private birthday party for 8 people next Saturday?')">🎂 Private Party for 8</div>
+                <div class="pill" onclick="sendQuickPrompt('Do I need experience for the Beginner Wheel class?')">✋ Beginner Experience?</div>
+                <div class="pill" onclick="sendQuickPrompt('What happens if I need to reschedule?')">🔄 Rescheduling Policy</div>
+            </div>
+
+            <div class="chat-footer">
+                <input type="text" id="userInput" class="chat-input" placeholder="Ask about classes, private buyouts, or studio hours..." onkeypress="handleKeyPress(event)">
+                <button class="btn-send" onclick="handleUserSend()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const responses = {
+            "Can I book a private birthday party for 8 people next Saturday?": `We would love to host your birthday celebration! 🎉
+            
+For an 8-person private party, our **Exclusive Studio Buyout** includes 2 full hours of hands-on wheel throwing, dedicated instructor guidance, clay, glazes, and final firing of all pieces.
+
+<div class="booking-card">
+    <h5>Private Party Package (8 Guests)</h5>
+    <p>• Date: Next Saturday (2:00 PM or 5:30 PM slot)<br>• Investment: $850 total (Includes all materials)<br>• BYOB friendly with studio glassware provided</p>
+    <button class="btn-confirm" onclick="confirmBooking()">Hold Saturday 2:00 PM Slot</button>
+</div>`,
+
+            "Do I need experience for the Beginner Wheel class?": `None at all! Over 85% of our students have never touched a pottery wheel before. 
+            
+Our instructors guide you through wedging, centering, pulling walls, and shaping your first cylinder and bowl. You will create 2 to 3 finished pieces that we glaze and fire for you!`,
+
+            "What happens if I need to reschedule?": `We know life happens! You can reschedule any single class up to 48 hours prior with zero fees right through this chat assistant. 
+
+If within 48 hours, we can also transfer your seat to a friend or credit your studio account for future open studio practice.`
+        };
+
+        function addMessage(text, isUser = false) {
+            const chatBody = document.getElementById("chatBody");
+            const msg = document.createElement("div");
+            msg.className = "message " + (isUser ? "user" : "bot");
+            msg.innerHTML = text;
+            chatBody.appendChild(msg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function sendQuickPrompt(prompt) {
+            addMessage(prompt, true);
+            setTimeout(() => {
+                const reply = responses[prompt] || "I would be delighted to assist with that! Our studio coordinator can also confirm exact availability directly onto your calendar.";
+                addMessage(reply, false);
+            }, 600);
+        }
+
+        function handleUserSend() {
+            const input = document.getElementById("userInput");
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, true);
+            input.value = "";
+
+            setTimeout(() => {
+                if (text.toLowerCase().includes("party") || text.toLowerCase().includes("private") || text.toLowerCase().includes("group")) {
+                    sendQuickPrompt("Can I book a private birthday party for 8 people next Saturday?");
+                } else if (text.toLowerCase().includes("experience") || text.toLowerCase().includes("beginner") || text.toLowerCase().includes("first time")) {
+                    sendQuickPrompt("Do I need experience for the Beginner Wheel class?");
+                } else if (text.toLowerCase().includes("cancel") || text.toLowerCase().includes("reschedule") || text.toLowerCase().includes("policy")) {
+                    sendQuickPrompt("What happens if I need to reschedule?");
+                } else {
+                    addMessage(`Thank you for reaching out! For that request, I can hold a slot on our master calendar or connect you with Natali and our studio directorship right away. Would you like to confirm a tentative date?`, false);
+                }
+            }, 700);
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === "Enter") {
+                handleUserSend();
+            }
+        }
+
+        function triggerPartyInquiry() {
+            sendQuickPrompt("Can I book a private birthday party for 8 people next Saturday?");
+        }
+
+        function confirmBooking() {
+            addMessage("🎉 **Deposit Hold Confirmed!** A calendar hold has been reserved for Saturday at 2:00 PM. An automated calendar invite and party prep guide has been dispatched to your email.", false);
+        }
+    </script>
+</body>
+</html>
